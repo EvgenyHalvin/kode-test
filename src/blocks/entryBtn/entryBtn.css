@@ -1,0 +1,23 @@
+.entryBtn {
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  width: 280px;
+  height: 45px;
+  margin: 20px auto 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+
+  font-family: Comfortaa, sans-serif;
+  font-weight: 700;
+
+  transition: .2s ease-in-out;
+  cursor: pointer;
+}
+
+.entryBtn:hover {
+  box-shadow: 0px 5px 10px 3px rgba(256, 256, 256, 0.2);
+}

@@ -1,1 +1,11 @@
 @import url(../vendor/normalize.css);
+@import url(../fonts/fonts.css);
+@import url(../blocks/page/page.css);
+
+@import url(../blocks/login/login.css);
+@import url(../blocks/form/form.css);
+@import url(../blocks/input/input.css);
+@import url(../blocks/entryBtn/entryBtn.css);
+@import url(../blocks/entryBtn/entryBtn_disabled.css);
+@import url(../blocks/error/error.css);
+@import url(../blocks/loader/loader.css);

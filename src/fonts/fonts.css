@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Comfortaa';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: swap;
+	src: url("comfortaa/Comfortaa-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Comfortaa';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("comfortaa/Comfortaa-Regular.ttf") format("truetype");
+}
