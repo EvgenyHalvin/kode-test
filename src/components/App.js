@@ -1,6 +1,8 @@
 import { React, useState, useEffect } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 
+// Импорт компоонентов
+import Header from "./Header";
 import Login from "./Login";
 import ProtectedRoute from "./ProtectedRoute";
 import Main from "./Main";
@@ -32,7 +34,7 @@ function App() {
     }
   }, [history]);
 
-  // Авторизация(имитация) и запись токена в LocalStorage.
+  // Авторизация и запись токена в LocalStorage(имитация)
   function checkMatch(data) {
     if (JSON.stringify(data) === JSON.stringify(fakeUser)) {
       setAuthData(data);
@@ -43,9 +45,10 @@ function App() {
     }
   }
 
-  // Подтверждение по коду из SMS
+  // Подтверждение по коду из SMS(имитация)
   function checkCode(code) {
     if (code) {
+      setLoggedIn(false);
       setIsConfirmed(true);
       localStorage.setItem(
         "jwt",
@@ -73,6 +76,11 @@ function App() {
   return (
     <>
       <div className="page">
+        <Header
+          signOut={signOut}
+          loggedIn={loggedIn}
+          isConfirmed={isConfirmed}
+        />
         <Switch>
           <Route path="/sign-in">
             <Login checkMatch={checkMatch} />

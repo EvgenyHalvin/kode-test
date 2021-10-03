@@ -5,6 +5,7 @@ import * as Yup from "yup";
 function Login({ checkMatch }) {
   return (
     <div className="login">
+      <h1 className="login__title">Авторизация</h1>
       <Formik
         initialValues={{ email: "", password: "" }}
         validationSchema={Yup.object().shape({

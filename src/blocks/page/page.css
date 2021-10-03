@@ -2,4 +2,12 @@
   background-color: #111;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+}
+
+@media screen and (max-width: 880px) {
+  .page {
+    padding: 0;
+  }
 }
