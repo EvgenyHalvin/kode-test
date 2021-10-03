@@ -1,0 +1,15 @@
+.confirm__title {
+  font-family: Comfortaa, sans-serif;
+  text-align: center;
+  color: #fff;
+  font-size: 22px;
+  margin: 5px auto 30px;
+  padding: 25px 10px;
+  width: 260px;
+  font-size: 15px;
+  text-align: justify;
+  font-weight: 400;
+  background-color: rgb(49, 49, 49);
+  border-radius: 3px;
+  user-select: none;
+}

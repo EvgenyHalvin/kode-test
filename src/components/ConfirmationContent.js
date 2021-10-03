@@ -5,6 +5,7 @@ import * as Yup from "yup";
 function ConfirmationContent({ confirm }) {
   return (
     <div className="confirm">
+      <p className="confirm__title">На Ваш номер телефона был выслан код проверки. Введите его в поле ниже.</p>
       <Formik
         initialValues={{ code: "" }}
         validationSchema={Yup.object().shape({

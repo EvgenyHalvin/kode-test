@@ -9,11 +9,14 @@
 @import url(../blocks/entryBtn/entryBtn_disabled.css);
 @import url(../blocks/error/error.css);
 @import url(../blocks/loader/loader.css);
-@import url(../blocks/confirm/confirm.css);
 
 /* Стили для Login */
 @import url(../blocks/login/login.css);
 @import url(../blocks/login/__title/login__title.css);
+
+/* Стили для Confirm */
+@import url(../blocks/confirm/confirm.css);
+@import url(../blocks/confirm/__title/confirm__title.css);
 
 /* Стили для попапа */
 @import url(../blocks/popup/popup.css);
