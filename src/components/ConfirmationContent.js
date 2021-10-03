@@ -3,9 +3,12 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 function ConfirmationContent({ confirm }) {
+  console.log("Код проверки: 123456")
   return (
     <div className="confirm">
-      <p className="confirm__title">На Ваш номер телефона был выслан код проверки. Введите его в поле ниже.</p>
+      <p className="confirm__title">
+        На Ваш номер телефона был выслан код проверки. Введите его в поле ниже.
+      </p>
       <Formik
         initialValues={{ code: "" }}
         validationSchema={Yup.object().shape({

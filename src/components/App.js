@@ -46,8 +46,9 @@ function App() {
   }
 
   // Подтверждение по коду из SMS(имитация)
-  function checkCode(code) {
-    if (code) {
+  function checkCode({ code }) {
+    const fakeCode = 123456;
+    if (code == fakeCode) {
       setLoggedIn(false);
       setIsConfirmed(true);
       localStorage.setItem(

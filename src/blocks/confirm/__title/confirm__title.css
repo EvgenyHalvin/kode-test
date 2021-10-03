@@ -12,7 +12,7 @@
   background-color: rgb(49, 49, 49);
   border-radius: 3px;
   user-select: none;
-  animation: 4s backlight ease-in-out 500ms;
+  animation: 4s backlight ease-in-out;
 }
 
 @keyframes backlight {
