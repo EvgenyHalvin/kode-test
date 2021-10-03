@@ -1,4 +1,4 @@
-import { Redirect, Route } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import ConfirmationContent from "./ConfirmationContent";
 
 function Confirmation(props) {

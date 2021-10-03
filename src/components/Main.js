@@ -1,9 +1,9 @@
-import react from "react";
+import React from "react";
 
 function Main({ signOut }) {
   return (
     <div className="main">
-      
+
     </div>
   );
 }
