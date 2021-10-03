@@ -12,4 +12,15 @@
   background-color: rgb(49, 49, 49);
   border-radius: 3px;
   user-select: none;
+  animation: 4s backlight ease-in-out 500ms;
+}
+
+@keyframes backlight {
+  0% {
+    background-color: rgba(255, 244, 85, 0.623);
+  }
+
+  100% {
+    background-color: rgb(49, 49, 49);
+  }
 }
