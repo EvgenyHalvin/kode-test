@@ -1,0 +1,13 @@
+.popup__container_show-image {
+  background-color: transparent;
+  max-width: 75vw;
+  max-height: 75vh;
+  position: relative;
+}
+
+@media screen and (max-width: 879px) {
+  .popup__container_show-image {
+    max-width: 75vw;
+    max-height: 75vh;
+  }
+}
