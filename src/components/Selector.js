@@ -12,7 +12,6 @@ function Selector({ selesctItem, listItems, typeSelector }) {
 
   function changeOption(e) {
     setSelectValue(e.target.value);
-    console.log(e.target.value)
     setListValueItems(() =>
       listItems.filter((item) => item.toLowerCase().includes(e.target.value.toLowerCase()))
     );
