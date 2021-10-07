@@ -10,11 +10,16 @@ function Selector({ selesctItem, listItems, typeSelector }) {
     setListValueItems(listItems);
   }, [listItems]);
 
+  useEffect(() => {
+    setListValueItems(() =>
+      listItems.filter((item) =>
+        item.toLowerCase().includes(selectValue.toLowerCase())
+      )
+    );
+  }, [selectValue]);
+
   function changeOption(e) {
     setSelectValue(e.target.value);
-    setListValueItems(() =>
-      listItems.filter((item) => item.toLowerCase().includes(e.target.value.toLowerCase()))
-    );
   }
 
   function handleMenu() {
