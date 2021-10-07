@@ -1,0 +1,5 @@
+.selector__menu {
+  display: none;
+  width: 200px;
+  flex-direction: column;
+}

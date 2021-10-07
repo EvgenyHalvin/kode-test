@@ -9,6 +9,9 @@ import Main from "./Main";
 import ErrorPopup from "./ErrorPopup";
 import Confirmation from "./Confirmation";
 
+// Импорт utils
+import api from "../utils/api.js";
+
 function App() {
   const fakeUser = {
     email: "kode@kode.ru",
@@ -19,6 +22,9 @@ function App() {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [authData, setAuthData] = useState({});
   const [isInfoToolTipOpen, setIsInfoToolTipOpen] = useState(false);
+  const [cards, setCards] = useState([]);
+  const [types, setTypes] = useState([]);
+  const [subtypes, setSubtypes] = useState([]);
 
   const history = useHistory();
 
@@ -27,12 +33,45 @@ function App() {
     const token = localStorage.getItem("jwt");
     if (token) {
       setIsConfirmed(true);
+      getTypes();
+      getSubtypes();
+      getCards();
       history.push("/");
     } else {
       setIsConfirmed(false);
       history.push("/sign-in");
     }
   }, [history]);
+
+  // Рендер карточек с сервера
+  function getCards() {
+    api
+      .getCards()
+      .then((res) => {
+        setCards(res.data); //временное решение!!!
+      })
+      .catch((err) => console.log(err));
+  }
+
+  // Рендер типов
+  function getTypes() {
+    api
+      .getTypes()
+      .then((res) => {
+        setTypes(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  // Рендер подтипов
+  function getSubtypes() {
+    api
+      .getSubtypes()
+      .then((res) => {
+        setSubtypes(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
 
   // Авторизация и запись токена в LocalStorage(имитация)
   function checkMatch(data) {
@@ -95,7 +134,9 @@ function App() {
             path="/"
             isConfirmed={isConfirmed}
             component={Main}
-            signOut={signOut}
+            cards={cards}
+            types={types}
+            subtypes={subtypes}
           />
         </Switch>
       </div>

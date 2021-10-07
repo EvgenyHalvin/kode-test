@@ -1,0 +1,14 @@
+.selector__switch {
+  height: 30px;
+  width: 200px;
+  border-radius: 4px;
+  background-color: rgb(255, 81, 81);
+  transition: .15s;
+  cursor: pointer;
+  margin: 2px 0;
+  user-select: none;
+}
+
+.selector__switch:hover {
+  background-color: rgb(255, 44, 44);
+}

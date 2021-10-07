@@ -13,11 +13,6 @@ function ConfirmationContent({ confirm }) {
         initialValues={{ code: "" }}
         validationSchema={Yup.object().shape({
           code: Yup.number()
-            .test(
-              "length",
-              "Код должен быть из 6 цифр",
-              (val) => val.toString().length === 6
-            )
             .typeError("Код должен состоять только из цифр")
             .required("Введите код из SMS-сообщения"),
         })}

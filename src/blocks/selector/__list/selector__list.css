@@ -1,0 +1,7 @@
+.selector__list {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(78, 78, 78);
+  padding: 0;
+  margin: 0;
+}

@@ -1,0 +1,10 @@
+.selector__list-item {
+  list-style-type: none;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+.selector__list-item:hover {
+  background-color: rgb(129, 129, 129);
+}

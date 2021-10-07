@@ -1,0 +1,13 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  padding: 0 10px;
+  flex-direction: row;
+  min-height: 100px;
+}
+
+@media screen and (max-width: 880px) {
+  .main {
+    flex-direction: column;
+  }
+}

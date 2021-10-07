@@ -30,3 +30,23 @@
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/header/__link/header__link.css);
+
+/* Стили для main */
+@import url(../blocks/main/main.css);
+
+/* Стили для cards и card */
+@import url(../blocks/cards/cards.css);
+@import url(../blocks/card/card.css);
+@import url(../blocks/card/__image/card__image.css);
+
+/* Стили для sidebar */
+@import url(../blocks/sidebar/sidebar.css);
+
+/* Стили для selector */
+@import url(../blocks/selector/selector.css);
+@import url(../blocks/selector/__switch/selector__switch.css);
+@import url(../blocks/selector/__menu/selector__menu.css);
+@import url(../blocks/selector/__menu/selector__menu_opened.css);
+@import url(../blocks/selector/__finder/selector__finder.css);
+@import url(../blocks/selector/__list/selector__list.css);
+@import url(../blocks/selector/__list-item/selector__list-item.css);
