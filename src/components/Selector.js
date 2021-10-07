@@ -10,12 +10,12 @@ function Selector({ selesctItem, listItems, typeSelector }) {
     setListValueItems(listItems);
   }, [listItems]);
 
-  useEffect(() => {
-    setListValueItems(listValueItems => listValueItems.filter((item) => item === selectValue))
-  },[selectValue])
-
   function changeOption(e) {
     setSelectValue(e.target.value);
+    console.log(e.target.value)
+    setListValueItems(() =>
+      listItems.filter((item) => item.toLowerCase().includes(e.target.value.toLowerCase()))
+    );
   }
 
   function handleMenu() {
@@ -43,6 +43,7 @@ function Selector({ selesctItem, listItems, typeSelector }) {
           placeholder="Искать"
           value={selectValue || ""}
           onChange={changeOption}
+          autoComplete="off"
         />
         <ul className="selector__list">
           {listValueItems.map((item, i) => (
