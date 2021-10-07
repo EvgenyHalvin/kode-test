@@ -1,0 +1,7 @@
+.pagination__button {
+  display: block;
+  margin: auto 10px;
+  height: 30px;
+  background-color: darkgreen;
+  color: #fff;
+}

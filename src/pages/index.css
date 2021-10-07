@@ -50,3 +50,7 @@
 @import url(../blocks/selector/__finder/selector__finder.css);
 @import url(../blocks/selector/__list/selector__list.css);
 @import url(../blocks/selector/__list-item/selector__list-item.css);
+
+/* Стили для pagination */
+@import url(../blocks/pagination/pagination.css);
+@import url(../blocks/pagination/__button/pagination__button.css);
