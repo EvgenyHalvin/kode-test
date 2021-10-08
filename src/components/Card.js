@@ -1,22 +1,12 @@
 import React from "react";
-import CardTemplate from "./CardTemplate";
 
-function Card({ card, options }) {
+function Card({ card }) {
   return (
-    <>
-      {!options.type && !options.subtype ? (
-        <CardTemplate card={card} />
-      ) : card.types.includes(options.type) && !options.subtype ? (
-        <CardTemplate card={card} />
-      ) : !options.type && card.subtypes.includes(options.subtype) ? (
-        <CardTemplate card={card} />
-      ) : card.types.includes(options.type) &&
-        card.subtypes.includes(options.subtype) ? (
-        <CardTemplate card={card} />
-      ) : (
-        console.log("Совпадения не найдены")
-      )}
-    </>
+    <div className="card">
+      <div style={{backgroundImage: `url(${card.images.small})`}} className="card__image"></div>
+      <div className="card__name">{card.name}</div>
+      <div className="card__subtitle">{card.artist}</div>
+    </div>
   );
 }
 

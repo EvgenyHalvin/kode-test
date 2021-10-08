@@ -48,7 +48,7 @@ function App() {
     api
       .getCards()
       .then((res) => {
-        setCards(res.data.slice(0,40)); //временное решение!!!
+        setCards(res.data.slice(0,43)); //временное решение!!!
       })
       .catch((err) => console.log(err));
   }

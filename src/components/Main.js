@@ -14,19 +14,24 @@ function Main(props) {
   const [pagesAmount, setPagesAmount] = useState(1);
   const [defaultCards, setDefaultCards] = useState(cards);
 
+  // ФУНКЦИОНАЛЬНОСТЬ ДЛЯ ПАГИНАЦИИ:
+  // Начальный рендер первой страницы с карточкамми
   useEffect(() => {
-    setDefaultCards(cards);
-    changePage(1);
+    setDefaultCards(cards); // В этом месте пока что еще целый массив
+    changePage(1); // Здесь массив уже урезан до объема, отображаемого на странице
   }, [cards]);
 
+  // Установка количества страниц
   useEffect(() => {
     setPagesAmount(Math.ceil(cards.length / cardsPerPage));
   }, [cards]);
 
+  // Зависимость выбора части массива от страницы
   useEffect(() => {
     changePage(currentPage);
   }, [currentPage]);
 
+  // Оставляем только ту часть массива, которая нужна для отображения на странице
   function changePage(numberPage) {
     setDefaultCards(
       cards.slice(
@@ -36,6 +41,7 @@ function Main(props) {
     );
   }
 
+  // Переключиться на след.страницу
   function nextPage() {
     setCurrentPage(prev => {
       if (prev === pagesAmount) {
@@ -46,6 +52,7 @@ function Main(props) {
     });
   }
 
+  // Переключиться на предыдущ.страницу
   function prevPage() {
     setCurrentPage(prev => {
       if (prev === 1) {
@@ -56,16 +63,29 @@ function Main(props) {
     });
   }
 
+  // Переключиться на первую страницу
   function firstPage() {
     setCurrentPage(1);
   }
 
+  // Переключиться на последнюю страницу
   function lastPage() {
     setCurrentPage(pagesAmount);
   }
 
+  // ФУНКЦИОНАЛЬНОСТЬ ДЛЯ ФИЛЬТРАЦИИ КАРТОЧЕК
+  // Задание опций для фильтрации карточек
   function getSelectedOptions(options) {
     setSelectedOptions(options);
+  }
+
+  // Изменение массива в зависимости от выбранных опций
+  useEffect(() => {
+    changeArray(selectedOptions)
+  }, [selectedOptions])
+
+  function changeArray(options) {
+    
   }
 
   return (
@@ -75,7 +95,7 @@ function Main(props) {
         subtypes={subtypes}
         getSelectedOptions={getSelectedOptions}
       />
-      <Cards cards={defaultCards} options={selectedOptions} />
+      <Cards cards={defaultCards} />
       <Pagination
         currentPage={currentPage}
         routePage={{ nextPage, prevPage, firstPage, lastPage }}
