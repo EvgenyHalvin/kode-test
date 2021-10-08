@@ -1,13 +1,13 @@
 import React from "react";
 
-function Pagination({ currentPage, routePage }) {
+function Pagination({ currentPage, routePage, pagesAmount }) {
   const { nextPage, prevPage, firstPage, lastPage } = routePage;
 
   return (
     <div className="pagination">
       <button className="pagination__button" onClick={firstPage}>на первую</button>
       <button className="pagination__button" onClick={prevPage}>предыдущая</button>
-      <button className="pagination__button">{currentPage}</button>
+      <button className="pagination__button">{currentPage} / {pagesAmount}</button>
       <button className="pagination__button" onClick={nextPage}>
         следующая
       </button>

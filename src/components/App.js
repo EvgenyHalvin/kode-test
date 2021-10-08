@@ -25,6 +25,8 @@ function App() {
   const [cards, setCards] = useState([]);
   const [types, setTypes] = useState([]);
   const [subtypes, setSubtypes] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState({});
+  const [copyCards, setCopyCards] = useState([]);
 
   const history = useHistory();
 
@@ -48,7 +50,8 @@ function App() {
     api
       .getCards()
       .then((res) => {
-        setCards(res.data.slice(0,43)); //временное решение!!!
+        setCards(res.data);
+        setCopyCards(res.data);
       })
       .catch((err) => console.log(err));
   }
@@ -113,6 +116,38 @@ function App() {
     setIsInfoToolTipOpen(false);
   }
 
+  // ФУНКЦИОНАЛЬНОСТЬ ДЛЯ ФИЛЬТРАЦИИ КАРТОЧЕК
+  // Задание опций для фильтрации карточек
+  function getSelectedOptions(options) {
+    setSelectedOptions(options);
+  }
+  
+  useEffect(() => {
+    setCards(() => {
+      return copyCards.filter((item) => {
+        if (!selectedOptions.type && !selectedOptions.subtype) {
+          return true;
+        } else if (
+          item.types.includes(selectedOptions.type) &&
+          !selectedOptions.subtype
+        ) {
+          return true;
+        } else if (
+          !selectedOptions.type &&
+          item.subtypes.includes(selectedOptions.subtype)
+        ) {
+          return true;
+        } else if (
+          item.types.includes(selectedOptions.type) &&
+          item.subtypes.includes(selectedOptions.subtype)
+        ) {
+          return true;
+        }
+        return false;
+      });
+    });
+  }, [selectedOptions]);
+
   return (
     <>
       <div className="page">
@@ -137,6 +172,7 @@ function App() {
             cards={cards}
             types={types}
             subtypes={subtypes}
+            getSelectedOptions={getSelectedOptions}
           />
         </Switch>
       </div>

@@ -6,9 +6,8 @@ import Pagination from "./Pagination";
 import { useEffect } from "react/cjs/react.development";
 
 function Main(props) {
-  const { cards, types, subtypes } = props;
+  const { cards, types, subtypes, getSelectedOptions } = props;
 
-  const [selectedOptions, setSelectedOptions] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(4);
   const [pagesAmount, setPagesAmount] = useState(1);
@@ -73,21 +72,6 @@ function Main(props) {
     setCurrentPage(pagesAmount);
   }
 
-  // ФУНКЦИОНАЛЬНОСТЬ ДЛЯ ФИЛЬТРАЦИИ КАРТОЧЕК
-  // Задание опций для фильтрации карточек
-  function getSelectedOptions(options) {
-    setSelectedOptions(options);
-  }
-
-  // Изменение массива в зависимости от выбранных опций
-  useEffect(() => {
-    changeArray(selectedOptions)
-  }, [selectedOptions])
-
-  function changeArray(options) {
-    
-  }
-
   return (
     <div className="main">
       <Sidebar
@@ -98,6 +82,7 @@ function Main(props) {
       <Cards cards={defaultCards} />
       <Pagination
         currentPage={currentPage}
+        pagesAmount={pagesAmount}
         routePage={{ nextPage, prevPage, firstPage, lastPage }}
       />
     </div>
