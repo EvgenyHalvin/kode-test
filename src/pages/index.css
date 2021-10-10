@@ -10,6 +10,8 @@
 @import url(../blocks/error/error.css);
 @import url(../blocks/loader/loader.css);
 @import url(../blocks/cardsLoader/cardsLoader.css);
+@import url(../blocks/main-side/main-side.css);
+@import url(../blocks/wrap-for-loader/wrap-for-loader.css);
 
 /* Стили для Login */
 @import url(../blocks/login/login.css);
@@ -62,3 +64,4 @@
 /* Стили для pagination */
 @import url(../blocks/pagination/pagination.css);
 @import url(../blocks/pagination/__button/pagination__button.css);
+@import url(../blocks/pagination/__message/pagination__message.css);

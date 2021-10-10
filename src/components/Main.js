@@ -100,6 +100,7 @@ function Main(props) {
         <Pagination
           currentPage={currentPage}
           pagesAmount={pagesAmount}
+          isGotItems={isGotItems}
           routePage={{ nextPage, prevPage, firstPage, lastPage }}
         />
       </div>

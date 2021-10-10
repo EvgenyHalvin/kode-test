@@ -6,19 +6,21 @@ function Cards({ cards, getPokemonInfo, isGotItems }) {
   return (
     <div className="cards">
       {isGotItems ? (
-        <div className="cardsLoader">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+        <div className="wrap-for-loader">
+          <div className="cardsLoader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </div>
       ) : (
         cards.map((item) => (

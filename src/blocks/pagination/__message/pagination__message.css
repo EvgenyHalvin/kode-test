@@ -1,19 +1,18 @@
-.pagination__button {
-  display: block;
+.pagination__message {
   margin: auto 10px 0;
   height: 40px;
   background-color: rgb(139, 139, 139);
   color: #fff;
   border-radius: 20px;
   border: none;
-  padding: 5px 15px;
-  cursor: pointer;
+  padding: 0px 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  opacity: .7;
+  user-select: none;
 
   font-size: 16px;
   font-family: Comfortaa, sans-serif;
   transition: .15s;
-}
-
-.pagination__button:hover {
-  opacity: .8;
 }
