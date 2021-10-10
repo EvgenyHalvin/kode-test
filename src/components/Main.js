@@ -40,6 +40,11 @@ function Main(props) {
     );
   }
 
+  // Переход на первую страницу при выборе фильтров
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [cards])
+
   // Переключиться на след.страницу
   function nextPage() {
     setCurrentPage(prev => {

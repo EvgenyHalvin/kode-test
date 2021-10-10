@@ -3,19 +3,22 @@ import ListItem from "./ListItem";
 
 function Selector({ selesctItem, listItems, typeSelector }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectValue, setSelectValue] = useState();
+  const [selectValue, setSelectValue] = useState("");
   const [listValueItems, setListValueItems] = useState([]);
+  const [titleSelect, setTitleSelect] = useState("Не выбрано");
 
   useEffect(() => {
     setListValueItems(listItems);
   }, [listItems]);
 
   useEffect(() => {
-    setListValueItems(() =>
-      listItems.filter((item) =>
-        item.toLowerCase().includes(selectValue.toLowerCase())
-      )
-    );
+    if (listItems) {
+      setListValueItems(() =>
+        listItems.filter((item) =>
+          item.toLowerCase().includes(selectValue.toLowerCase())
+        )
+      );
+    }
   }, [selectValue]);
 
   function changeOption(e) {
@@ -24,16 +27,25 @@ function Selector({ selesctItem, listItems, typeSelector }) {
 
   function handleMenu() {
     setIsMenuOpen(!isMenuOpen);
+    setSelectValue("");
   }
 
   function choiceTypeAndSelect(item) {
+    setSelectValue(item);
+    setItemTitle(item);
     selesctItem(item, typeSelector);
+  }
+
+  function setItemTitle(name) {
+    setTitleSelect(name);
+    setIsMenuOpen(false);
+    setSelectValue("");
   }
 
   return (
     <div className="selector">
       <div className="selector__switch" onClick={() => handleMenu()}>
-        {isMenuOpen ? "Свернуть список" : "Раскрыть список"}
+        {titleSelect}
       </div>
       <div
         className={`selector__menu ${

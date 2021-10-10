@@ -4,7 +4,7 @@ import Selector from "./Selector";
 function Sidebar(props) {
   const { types, subtypes, getSelectedOptions } = props;
   
-  const [selectedItems, setSelectedItems] = useState({})
+  const [selectedItems, setSelectedItems] = useState({});
 
   useEffect(() => {
     getSelectedOptions(selectedItems)

@@ -116,12 +116,13 @@ function App() {
     setIsInfoToolTipOpen(false);
   }
 
-  // ФУНКЦИОНАЛЬНОСТЬ ДЛЯ ФИЛЬТРАЦИИ КАРТОЧЕК
+  // ФУНКЦИОНАЛЬНОСТЬ ДЛЯ ФИЛЬТРАЦИИ КАРТОЧЕК:
   // Задание опций для фильтрации карточек
   function getSelectedOptions(options) {
     setSelectedOptions(options);
   }
-  
+
+  // Проверка по условиям фильтра
   useEffect(() => {
     setCards(() => {
       return copyCards.filter((item) => {
