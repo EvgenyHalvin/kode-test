@@ -1,12 +1,11 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 
 import Cards from "./Cards";
 import Sidebar from "./Sidebar";
 import Pagination from "./Pagination";
-import { useEffect } from "react/cjs/react.development";
 
 function Main(props) {
-  const { cards, types, subtypes, getSelectedOptions } = props;
+  const { cards, types, subtypes, getSelectedOptions, getPokemonInfo } = props;
 
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(4);
@@ -42,27 +41,27 @@ function Main(props) {
 
   // Переход на первую страницу при выборе фильтров
   useEffect(() => {
-    setCurrentPage(1)
-  }, [cards])
+    setCurrentPage(1);
+  }, [cards]);
 
   // Переключиться на след.страницу
   function nextPage() {
-    setCurrentPage(prev => {
+    setCurrentPage((prev) => {
       if (prev === pagesAmount) {
-        return prev
+        return prev;
       } else {
-        return prev + 1
+        return prev + 1;
       }
     });
   }
 
   // Переключиться на предыдущ.страницу
   function prevPage() {
-    setCurrentPage(prev => {
+    setCurrentPage((prev) => {
       if (prev === 1) {
-        return prev
+        return prev;
       } else {
-        return prev - 1
+        return prev - 1;
       }
     });
   }
@@ -84,7 +83,7 @@ function Main(props) {
         subtypes={subtypes}
         getSelectedOptions={getSelectedOptions}
       />
-      <Cards cards={defaultCards} />
+      <Cards cards={defaultCards} getPokemonInfo={getPokemonInfo} />
       <Pagination
         currentPage={currentPage}
         pagesAmount={pagesAmount}

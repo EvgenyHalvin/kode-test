@@ -8,9 +8,13 @@ import ProtectedRoute from "./ProtectedRoute";
 import Main from "./Main";
 import ErrorPopup from "./ErrorPopup";
 import Confirmation from "./Confirmation";
+import FullInfoCard from "./FullInfoCard";
 
 // Импорт utils
 import api from "../utils/api.js";
+
+// Импорт контекста
+import { PocemonFullInfoContext } from "../contexts/pocemonFullInfoContext.js";
 
 function App() {
   const fakeUser = {
@@ -27,6 +31,7 @@ function App() {
   const [subtypes, setSubtypes] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState({});
   const [copyCards, setCopyCards] = useState([]);
+  const [pokemonFullInfo, setPokemonFullInfo] = useState({});
 
   const history = useHistory();
 
@@ -38,7 +43,7 @@ function App() {
       getTypes();
       getSubtypes();
       getCards();
-      history.push("/");
+      history.push("/pokemon");
     } else {
       setIsConfirmed(false);
       history.push("/sign-in");
@@ -97,7 +102,7 @@ function App() {
         "jwt",
         `${authData.email}${authData.password}some_secret_key`
       );
-      history.push("/");
+      history.push("/pokemon");
     } else {
       setIsInfoToolTipOpen(true);
     }
@@ -114,6 +119,10 @@ function App() {
   // Закрытие любого из попапов
   function closeAllPopups() {
     setIsInfoToolTipOpen(false);
+  }
+
+  function getPokemonInfo(card) {
+    setPokemonFullInfo(card);
   }
 
   // ФУНКЦИОНАЛЬНОСТЬ ДЛЯ ФИЛЬТРАЦИИ КАРТОЧЕК:
@@ -152,30 +161,41 @@ function App() {
   return (
     <>
       <div className="page">
-        <Header
-          signOut={signOut}
-          loggedIn={loggedIn}
-          isConfirmed={isConfirmed}
-        />
-        <Switch>
-          <Route path="/sign-in">
-            <Login checkMatch={checkMatch} />
-          </Route>
-
-          <Route path="/confirmation">
-            <Confirmation loggedIn={loggedIn} confirm={checkCode} />
-          </Route>
-
-          <ProtectedRoute
-            path="/"
+        <PocemonFullInfoContext.Provider value={pokemonFullInfo}>
+          <Header
+            signOut={signOut}
+            loggedIn={loggedIn}
             isConfirmed={isConfirmed}
-            component={Main}
-            cards={cards}
-            types={types}
-            subtypes={subtypes}
-            getSelectedOptions={getSelectedOptions}
           />
-        </Switch>
+          <Switch>
+            <Route path="/sign-in">
+              <Login checkMatch={checkMatch} />
+            </Route>
+
+            <Route path="/confirmation">
+              <Confirmation loggedIn={loggedIn} confirm={checkCode} />
+            </Route>
+
+            <ProtectedRoute
+              path="/pokemon"
+              exact
+              isConfirmed={isConfirmed}
+              component={Main}
+              cards={cards}
+              types={types}
+              subtypes={subtypes}
+              getSelectedOptions={getSelectedOptions}
+              getPokemonInfo={getPokemonInfo}
+            />
+
+            <ProtectedRoute
+              path="/pokemon/:name"
+              isConfirmed={isConfirmed}
+              component={FullInfoCard}
+              cards={cards}
+            />
+          </Switch>
+        </PocemonFullInfoContext.Provider>
       </div>
 
       <ErrorPopup isOpen={isInfoToolTipOpen} onClose={closeAllPopups} />
