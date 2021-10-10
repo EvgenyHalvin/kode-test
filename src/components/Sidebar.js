@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 import Selector from "./Selector";
 
 function Sidebar(props) {
-  const { types, subtypes, getSelectedOptions } = props;
+  const { types, subtypes, getSelectedOptions, isGotItems } = props;
   
   const [selectedItems, setSelectedItems] = useState({});
 
@@ -16,8 +16,8 @@ function Sidebar(props) {
 
   return (
       <div className="sidebar">
-        <Selector selesctItem={getSelectedItems} listItems={types} typeSelector="type" />
-        <Selector selesctItem={getSelectedItems} listItems={subtypes} typeSelector="subtype" />
+        <Selector selesctItem={getSelectedItems} isGotItems={isGotItems} listItems={types} typeSelector="type" />
+        <Selector selesctItem={getSelectedItems} isGotItems={isGotItems} listItems={subtypes} typeSelector="subtype" />
       </div>
   );
 }

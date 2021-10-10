@@ -32,8 +32,11 @@ function App() {
   const [selectedOptions, setSelectedOptions] = useState({});
   const [copyCards, setCopyCards] = useState([]);
 
-  // Стэйта для контекста
+  // Стэйт для контекста
   const [pokemonFullInfo, setPokemonFullInfo] = useState({});
+
+  // Стэйты лоадеров
+  const [isGotItems, setIsGotItems] = useState(false);
 
   const history = useHistory();
 
@@ -54,13 +57,17 @@ function App() {
 
   // Рендер карточек с сервера
   function getCards() {
+    setIsGotItems(true);
     api
       .getCards()
       .then((res) => {
         setCards(res.data);
         setCopyCards(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsGotItems(false);
+      });
   }
 
   // Рендер типов
@@ -189,6 +196,7 @@ function App() {
               subtypes={subtypes}
               getSelectedOptions={getSelectedOptions}
               getPokemonInfo={getPokemonInfo}
+              isGotItems={isGotItems}
             />
 
             <ProtectedRoute

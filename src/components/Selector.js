@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import ListItem from "./ListItem";
 
-function Selector({ selesctItem, listItems, typeSelector }) {
+function Selector({ selesctItem, listItems, typeSelector, isGotItems }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectValue, setSelectValue] = useState("");
   const [listValueItems, setListValueItems] = useState([]);
@@ -44,8 +44,18 @@ function Selector({ selesctItem, listItems, typeSelector }) {
 
   return (
     <div className="selector">
-      <div className="selector__switch" onClick={() => handleMenu()}>
+      <div
+        className={`selector__switch ${
+          isMenuOpen ? "selector__switch_opened" : ""
+        }`}
+        onClick={() => handleMenu()}
+      >
         {titleSelect}
+        <span
+          className={`selector__arrow ${
+            isMenuOpen ? "selector__arrow_opened" : ""
+          }`}
+        ></span>
       </div>
       <div
         className={`selector__menu ${

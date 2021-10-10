@@ -1,0 +1,14 @@
+.card__subtitle {
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+  font-family: Comfortaa, sans-serif;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  color: #fff;
+}
+
+.card__subtitle p {
+  margin: 3px 0;
+  padding: 0;
+}

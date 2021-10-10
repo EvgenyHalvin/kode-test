@@ -5,7 +5,14 @@ import Sidebar from "./Sidebar";
 import Pagination from "./Pagination";
 
 function Main(props) {
-  const { cards, types, subtypes, getSelectedOptions, getPokemonInfo } = props;
+  const {
+    cards,
+    types,
+    subtypes,
+    getSelectedOptions,
+    getPokemonInfo,
+    isGotItems,
+  } = props;
 
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(4);
@@ -82,13 +89,20 @@ function Main(props) {
         types={types}
         subtypes={subtypes}
         getSelectedOptions={getSelectedOptions}
+        isGotItems={isGotItems}
       />
-      <Cards cards={defaultCards} getPokemonInfo={getPokemonInfo} />
-      <Pagination
-        currentPage={currentPage}
-        pagesAmount={pagesAmount}
-        routePage={{ nextPage, prevPage, firstPage, lastPage }}
-      />
+      <div className="main-side">
+        <Cards
+          cards={defaultCards}
+          getPokemonInfo={getPokemonInfo}
+          isGotItems={isGotItems}
+        />
+        <Pagination
+          currentPage={currentPage}
+          pagesAmount={pagesAmount}
+          routePage={{ nextPage, prevPage, firstPage, lastPage }}
+        />
+      </div>
     </div>
   );
 }

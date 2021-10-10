@@ -9,6 +9,7 @@
 @import url(../blocks/entryBtn/entryBtn_disabled.css);
 @import url(../blocks/error/error.css);
 @import url(../blocks/loader/loader.css);
+@import url(../blocks/cardsLoader/cardsLoader.css);
 
 /* Стили для Login */
 @import url(../blocks/login/login.css);
@@ -38,6 +39,10 @@
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__image/card__image.css);
+@import url(../blocks/card/__description/card__description.css);
+@import url(../blocks/card/__name/card__name.css);
+@import url(../blocks/card/__subtitle/card__subtitle.css);
+@import url(../blocks/card/__link/card__link.css);
 
 /* Стили для sidebar */
 @import url(../blocks/sidebar/sidebar.css);
@@ -50,6 +55,9 @@
 @import url(../blocks/selector/__finder/selector__finder.css);
 @import url(../blocks/selector/__list/selector__list.css);
 @import url(../blocks/selector/__list-item/selector__list-item.css);
+@import url(../blocks/selector/__arrow/selector__arrow.css);
+@import url(../blocks/selector/__arrow/selector__arrow_opened.css);
+@import url(../blocks/selector/__switch/selector__switch_opened.css);
 
 /* Стили для pagination */
 @import url(../blocks/pagination/pagination.css);
