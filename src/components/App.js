@@ -31,6 +31,8 @@ function App() {
   const [subtypes, setSubtypes] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState({});
   const [copyCards, setCopyCards] = useState([]);
+
+  // Стэйта для контекста
   const [pokemonFullInfo, setPokemonFullInfo] = useState({});
 
   const history = useHistory();
@@ -121,6 +123,7 @@ function App() {
     setIsInfoToolTipOpen(false);
   }
 
+  // Изменение значений контекста
   function getPokemonInfo(card) {
     setPokemonFullInfo(card);
   }
