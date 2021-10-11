@@ -1,0 +1,8 @@
+.full {
+  display: flex;
+  width: 1024px;
+  flex-direction: row;
+  background-color: rgb(49, 49, 49);
+  margin: 10px auto;
+  border-radius: 4px;
+}

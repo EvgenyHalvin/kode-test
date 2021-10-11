@@ -7,6 +7,7 @@ import Login from "./Login";
 import ProtectedRoute from "./ProtectedRoute";
 import Main from "./Main";
 import ErrorPopup from "./ErrorPopup";
+import FullImagePopup from "./FullImagePopup";
 import Confirmation from "./Confirmation";
 import FullInfoCard from "./FullInfoCard";
 
@@ -25,12 +26,16 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [authData, setAuthData] = useState({});
-  const [isInfoToolTipOpen, setIsInfoToolTipOpen] = useState(false);
   const [cards, setCards] = useState([]);
   const [types, setTypes] = useState([]);
   const [subtypes, setSubtypes] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState({});
   const [copyCards, setCopyCards] = useState([]);
+
+  // Для попапов
+  const [isInfoToolTipOpen, setIsInfoToolTipOpen] = useState(false);
+  const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
+  const [cardInfo, setCardInfo] = useState({});
 
   // Стэйт для контекста
   const [pokemonFullInfo, setPokemonFullInfo] = useState({});
@@ -128,6 +133,8 @@ function App() {
   // Закрытие любого из попапов
   function closeAllPopups() {
     setIsInfoToolTipOpen(false);
+    setIsImagePopupOpen(false);
+    setCardInfo({});
   }
 
   // Изменение значений контекста
@@ -168,6 +175,15 @@ function App() {
     });
   }, [selectedOptions]);
 
+  // Попап быстрого просмотра карточки
+  function openFullImagePopup() {
+    setIsImagePopupOpen(true)
+  }
+
+  function setInfoFullImagePopup(card) {
+    setCardInfo(card)
+  }
+
   return (
     <>
       <div className="page">
@@ -197,19 +213,21 @@ function App() {
               getSelectedOptions={getSelectedOptions}
               getPokemonInfo={getPokemonInfo}
               isGotItems={isGotItems}
+              setCardInfo={setInfoFullImagePopup}
+              openFullImage={openFullImagePopup}
             />
 
             <ProtectedRoute
               path="/pokemon/:name"
               isConfirmed={isConfirmed}
               component={FullInfoCard}
-              cards={cards}
             />
           </Switch>
         </PocemonFullInfoContext.Provider>
       </div>
 
       <ErrorPopup isOpen={isInfoToolTipOpen} onClose={closeAllPopups} />
+      <FullImagePopup card={cardInfo} isOpen={isImagePopupOpen} onClose={closeAllPopups} />
     </>
   );
 }

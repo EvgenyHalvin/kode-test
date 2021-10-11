@@ -1,0 +1,20 @@
+.full__link {
+  padding: 5px;
+  width: 100px;
+  height: 40px;
+  background-color: rgb(139, 139, 139);
+  border-radius: 3px;
+  color: #fff;
+  font-family: Comfortaa, sans-serif;
+  text-decoration: none;
+  margin-top: auto;
+  text-align: center;
+  transition: .15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.full__link:hover {
+  opacity: .8;
+}

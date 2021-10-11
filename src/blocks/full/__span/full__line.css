@@ -1,0 +1,7 @@
+.full__line {
+  display: block;
+  width: calc(100% - 30px);
+  margin: 10px auto 10px 0;
+  border-top: 2px solid #fff;
+  height: 2px;
+}

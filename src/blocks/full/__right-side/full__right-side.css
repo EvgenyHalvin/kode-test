@@ -1,0 +1,6 @@
+.full__right-side {
+  display: flex;
+  margin: 10px;
+  flex-direction: column;
+  justify-content: flex-start;
+}

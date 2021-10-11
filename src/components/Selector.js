@@ -1,15 +1,23 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 import ListItem from "./ListItem";
 
 function Selector({ selesctItem, listItems, typeSelector, isGotItems }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectValue, setSelectValue] = useState("");
   const [listValueItems, setListValueItems] = useState([]);
-  const [titleSelect, setTitleSelect] = useState("Не выбрано");
+  const [titleSelect, setTitleSelect] = useState("");
 
   useEffect(() => {
     setListValueItems(listItems);
   }, [listItems]);
+
+  useEffect(() => {
+    if(typeSelector === "type") {
+      setTitleSelect("Выберите тип")
+    } else {
+      setTitleSelect("Выберите подтип")
+    }
+  })
 
   useEffect(() => {
     if (listItems) {
@@ -43,20 +51,27 @@ function Selector({ selesctItem, listItems, typeSelector, isGotItems }) {
   }
 
   return (
-    <div className="selector">
-      <div
-        className={`selector__switch ${
-          isMenuOpen ? "selector__switch_opened" : ""
-        }`}
-        onClick={() => handleMenu()}
-      >
-        {titleSelect}
-        <span
-          className={`selector__arrow ${
-            isMenuOpen ? "selector__arrow_opened" : ""
+    <div className="selector" >
+      {isGotItems ? (
+        <div className="selector__switch selector__switch_disabled">
+          Идёт загрузка...
+          <div className="loader" />
+        </div>
+      ) : (
+        <div
+          className={`selector__switch ${
+            isMenuOpen ? "selector__switch_opened" : ""
           }`}
-        ></span>
-      </div>
+          onClick={() => handleMenu()}
+        >
+          {titleSelect}
+          <span
+            className={`selector__arrow ${
+              isMenuOpen ? "selector__arrow_opened" : ""
+            }`}
+          ></span>
+        </div>
+      )}
       <div
         className={`selector__menu ${
           isMenuOpen ? "selector__menu_opened" : ""
@@ -66,7 +81,7 @@ function Selector({ selesctItem, listItems, typeSelector, isGotItems }) {
           type="text"
           name="finder"
           className="selector__finder"
-          placeholder="Искать"
+          placeholder="Искать... "
           value={selectValue || ""}
           onChange={changeOption}
           autoComplete="off"

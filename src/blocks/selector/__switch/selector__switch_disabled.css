@@ -1,0 +1,8 @@
+.selector__switch_disabled {
+  opacity: .7;
+  cursor: default;
+  user-select: none;
+  justify-content: space-around;
+  pointer-events: none;
+  color: rgb(51, 51, 51);
+}

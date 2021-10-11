@@ -1,7 +1,7 @@
 .popup__image {
-	/* margin: auto auto; */
-	max-width: 75vw;
 	max-height: 75vh;
+	max-width: 75vw;
+	margin: auto auto;
 }
 
 @media screen and (max-width: 879px) {

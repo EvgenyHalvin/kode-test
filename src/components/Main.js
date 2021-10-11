@@ -12,6 +12,9 @@ function Main(props) {
     getSelectedOptions,
     getPokemonInfo,
     isGotItems,
+    onClose,
+    setCardInfo,
+    openFullImage,
   } = props;
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -96,6 +99,9 @@ function Main(props) {
           cards={defaultCards}
           getPokemonInfo={getPokemonInfo}
           isGotItems={isGotItems}
+          onClose={onClose}
+          setCardInfo={setCardInfo}
+          openFullImage={openFullImage}
         />
         <Pagination
           currentPage={currentPage}

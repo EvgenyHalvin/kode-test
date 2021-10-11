@@ -28,6 +28,7 @@
 @import url(../blocks/popup/__close-icon/popup__close-icon.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__err-image/popup__err-image.css);
+@import url(../blocks/popup/__image/popup__image.css);
 
 /* Стили для header */
 @import url(../blocks/header/header.css);
@@ -45,6 +46,7 @@
 @import url(../blocks/card/__name/card__name.css);
 @import url(../blocks/card/__subtitle/card__subtitle.css);
 @import url(../blocks/card/__link/card__link.css);
+@import url(../blocks/card/__quick-view/card__quick-view.css);
 
 /* Стили для sidebar */
 @import url(../blocks/sidebar/sidebar.css);
@@ -60,8 +62,20 @@
 @import url(../blocks/selector/__arrow/selector__arrow.css);
 @import url(../blocks/selector/__arrow/selector__arrow_opened.css);
 @import url(../blocks/selector/__switch/selector__switch_opened.css);
+@import url(../blocks/selector/__switch/selector__switch_disabled.css);
 
 /* Стили для pagination */
 @import url(../blocks/pagination/pagination.css);
 @import url(../blocks/pagination/__button/pagination__button.css);
 @import url(../blocks/pagination/__message/pagination__message.css);
+
+/* Стили для full */
+@import url(../blocks/full/full.css);
+@import url(../blocks/full/__left-side/full__left-side.css);
+@import url(../blocks/full/__right-side/full__right-side.css);
+@import url(../blocks/full/__image/full__image.css);
+@import url(../blocks/full/__description/full__description.css);
+@import url(../blocks/full/__link/full__link.css);
+@import url(../blocks/full/__title/full__title.css);
+@import url(../blocks/full/__subtitle/full__subtitle.css);
+@import url(../blocks/full/__span/full__line.css);
