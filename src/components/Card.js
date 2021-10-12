@@ -8,13 +8,13 @@ function Card({ card, getPokemonInfo, setCardInfo, openFullImage }) {
         <div
           style={{ backgroundImage: `url(${card.images.small})` }}
           className="card__image"
+          onClick={() => {
+            setCardInfo(card);
+            openFullImage();
+          }}
         >
           <span
             className="card__quick-view"
-            onClick={() => {
-              setCardInfo(card);
-              openFullImage();
-            }}
           ></span>
         </div>
         <div className="card__description">

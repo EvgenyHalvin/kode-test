@@ -5,4 +5,16 @@
   background-repeat: no-repeat;
   border-radius: 5px;
   position: relative;
+  transition: .15s ease-in-out;
+  cursor: pointer;
+  filter: brightness(.8);
+}
+
+.card__image:hover {
+  filter: brightness(1);
+}
+
+.card__image:hover span {
+  transform: scale(1.2) translate(4px, -4px);
+  opacity: .7;
 }
