@@ -3,13 +3,25 @@
   flex-direction: row;
   min-height: 100px;
   margin: 0 auto;
-  padding: 20px 0 0;
+  padding: 20px 0 20px;
   justify-content: space-between;
-  max-width: 984px;
+  width: 984px;
 }
 
 @media screen and (max-width: 1024px) {
   .main {
     flex-direction: column;
+    width: calc(100vw - 40px);
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .main {
+    width: calc(100vw - 20px);
+  }
+}
+@media screen and (max-width: 720px) {
+  .main {
+    padding-bottom: 60px;
   }
 }

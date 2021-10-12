@@ -4,3 +4,9 @@
   flex-wrap: wrap;
   max-width: 1024px;
 }
+
+@media screen and (max-width: 1024px) {
+  .cards {
+    justify-content: space-around;
+  }
+}

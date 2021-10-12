@@ -4,3 +4,10 @@
   margin-left: 10px;
   width: 150px;
 }
+
+@media screen and (max-width: 550px) {
+  .card__description {
+    width: auto;
+    margin: 0 10px;
+  }
+}

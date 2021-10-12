@@ -12,3 +12,10 @@
   margin: 3px 0;
   padding: 0;
 }
+
+@media screen and (max-width: 550px) {
+  .card__subtitle {
+    text-align: center;
+    margin: 5px auto 10px;
+  }
+}

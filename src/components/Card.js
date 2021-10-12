@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function Card({ card, getPokemonInfo, setCardInfo, openFullImage }) {
+
   return (
     <>
       <div className="card">
@@ -20,7 +21,7 @@ function Card({ card, getPokemonInfo, setCardInfo, openFullImage }) {
         <div className="card__description">
           <div className="card__name">{card.name}</div>
           <div className="card__subtitle">
-            Автор:<p>{card.artist}</p>
+            <b>Автор:</b> {card.artist}
           </div>
           <Link
             to={`/pokemon/${card.name}`}

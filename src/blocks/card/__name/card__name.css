@@ -6,3 +6,9 @@
   color: #fff;
   font-weight: 700;
 }
+
+@media screen and (max-width: 550px) {
+  .card__name {
+    margin: auto;
+  }
+}

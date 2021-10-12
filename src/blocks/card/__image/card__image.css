@@ -18,3 +18,10 @@
   transform: scale(1.2) translate(4px, -4px);
   opacity: .7;
 }
+
+@media screen and (max-width: 550px) {
+  .card__image {
+    margin: 0 auto 10px;
+    filter: brightness(1);
+  }
+}

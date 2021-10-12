@@ -6,23 +6,30 @@
   padding: 10px;
   height: 530px;
   margin-top: 0px;
-  margin-bottom: 10px;
 
   background-color: rgb(49, 49, 49);
 }
 
 @media screen and (max-width: 1024px) {
   .sidebar {
+    margin-bottom: 10px;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     height: auto;
     max-width: 984px;
     margin-right: 0;
+    margin-bottom: 20px;
   }
 }
 
 @media screen and (max-width: 880px) {
   .sidebar {
     margin: 0 10px 10px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .sidebar {
+    flex-direction: column;
   }
 }

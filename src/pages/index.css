@@ -67,6 +67,7 @@
 /* Стили для pagination */
 @import url(../blocks/pagination/pagination.css);
 @import url(../blocks/pagination/__button/pagination__button.css);
+@import url(../blocks/pagination/__button/pagination__button_disabled.css);
 @import url(../blocks/pagination/__message/pagination__message.css);
 
 /* Стили для full */
