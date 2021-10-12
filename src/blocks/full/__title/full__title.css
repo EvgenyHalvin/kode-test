@@ -6,3 +6,10 @@
   font-family: Comfortaa, sans-serif;
   color: #fff;
 }
+
+@media screen and (max-width: 720px) {
+  .full__title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}

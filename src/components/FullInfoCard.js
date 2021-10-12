@@ -21,7 +21,7 @@ function FullInfoCard() {
         <p className="full__subtitle">Затраты на атаку: {pokemon.attacks[0].cost[0] ? pokemon.attacks[0].cost[0] : "затраты не указаны или отсутствуют"}</p>
         <p className="full__subtitle">Слабости: {pokemon.weaknesses ? pokemon.weaknesses[0].type : "нет слабостей"}</p>
         <p className="full__subtitle">Кол-во здоровья: {pokemon.hp}hp</p>
-        <p className="full__description">Описание: {pokemon.flavorText}</p>
+        <p className="full__description"><b>Описание:</b> {pokemon.flavorText}</p>
         <Link to="/pokemon" className="full__link">Назад</Link>
       </section>
     </div>

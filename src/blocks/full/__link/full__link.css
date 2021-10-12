@@ -18,3 +18,10 @@
 .full__link:hover {
   opacity: .8;
 }
+
+@media screen and (max-width: 550px) {
+  .full__link {
+    width: 200px;
+    margin: 10px auto;
+  }
+}
