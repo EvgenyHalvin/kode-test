@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Header({ loggedIn, isConfirmed, signOut }) {
   return (
     <div className="header">
-      <Link to="/" className="header__logo">
+      <Link to="/pokemon" className="header__logo">
         LOGO
       </Link>
       <div className="header__status">
