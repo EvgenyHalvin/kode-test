@@ -55,6 +55,7 @@ function Selector({
     setSelectValue(item);
     setItemTitle(item);
     selesctItem(item, typeSelector);
+    handleMenu();
   }
 
   function setItemTitle(name) {

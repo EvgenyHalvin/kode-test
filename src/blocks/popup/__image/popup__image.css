@@ -2,10 +2,5 @@
 	max-height: 75vh;
 	max-width: 75vw;
 	margin: auto auto;
-}
-
-@media screen and (max-width: 879px) {
-	.show-image__full-size {
-		margin-top: 13px;
-	}
+	z-index: 4;
 }

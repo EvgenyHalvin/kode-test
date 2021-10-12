@@ -5,7 +5,24 @@
   border-radius: 3px;
   padding: 10px;
   height: 530px;
-  margin-top: 10px;
+  margin-top: 0px;
+  margin-bottom: 10px;
 
   background-color: rgb(49, 49, 49);
+}
+
+@media screen and (max-width: 1024px) {
+  .sidebar {
+    flex-direction: row;
+    justify-content: flex-start;
+    height: auto;
+    max-width: 984px;
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .sidebar {
+    margin: 0 10px 10px;
+  }
 }

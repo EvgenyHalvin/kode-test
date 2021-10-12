@@ -2,3 +2,9 @@
   position: relative;
   background-color: rgb(49, 49, 49);
 }
+
+@media screen and (max-width: 1024px) {
+  .selector {
+    margin: 0 20px;
+  }
+}
