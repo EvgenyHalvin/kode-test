@@ -15,6 +15,9 @@ function Main(props) {
     onClose,
     setCardInfo,
     openFullImage,
+    getCards,
+    getTypes,
+    getSubtypes,
   } = props;
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,6 +26,13 @@ function Main(props) {
   const [pagesAmount, setPagesAmount] = useState(1);
   const [defaultCards, setDefaultCards] = useState(cards);
 
+  useEffect(() => {
+    getCards();
+    getTypes();
+    getSubtypes();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  
   // ФУНКЦИОНАЛЬНОСТЬ ДЛЯ ПАГИНАЦИИ:
   // Начальный рендер первой страницы с карточкамми
   useEffect(() => {

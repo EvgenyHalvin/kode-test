@@ -51,9 +51,6 @@ function App() {
     if (token) {
       setIsConfirmed(true);
       history.push("/pokemon");
-      getCards();
-      getTypes();
-      getSubtypes();
     } else {
       setIsConfirmed(false);
       history.push("/sign-in");
@@ -217,6 +214,9 @@ function App() {
               isGotItems={isGotItems}
               setCardInfo={setInfoFullImagePopup}
               openFullImage={openFullImagePopup}
+              getCards={getCards}
+              getTypes={getTypes}
+              getSubtypes={getSubtypes}
             />
 
             <ProtectedRoute
