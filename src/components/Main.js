@@ -18,6 +18,7 @@ function Main(props) {
   } = props;
 
   const [currentPage, setCurrentPage] = useState(1);
+  // eslint-disable-next-line no-unused-vars
   const [cardsPerPage, setCardsPerPage] = useState(4);
   const [pagesAmount, setPagesAmount] = useState(1);
   const [defaultCards, setDefaultCards] = useState(cards);
@@ -27,16 +28,19 @@ function Main(props) {
   useEffect(() => {
     setDefaultCards(cards); // В этом месте пока что еще целый массив
     changePage(1); // Здесь массив уже урезан до объема, отображаемого на странице
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cards]);
 
   // Установка количества страниц
   useEffect(() => {
     setPagesAmount(Math.ceil(cards.length / cardsPerPage));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cards]);
 
   // Зависимость выбора части массива от страницы
   useEffect(() => {
     changePage(currentPage);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
   // Оставляем только ту часть массива, которая нужна для отображения на странице

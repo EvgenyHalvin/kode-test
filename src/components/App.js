@@ -109,6 +109,7 @@ function App() {
   // Подтверждение по коду из SMS(имитация)
   function checkCode({ code }) {
     const fakeCode = 123456;
+    // eslint-disable-next-line eqeqeq
     if (code == fakeCode) {
       setLoggedIn(false);
       setIsConfirmed(true);
@@ -173,6 +174,7 @@ function App() {
         return false;
       });
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedOptions]);
 
   // Попап быстрого просмотра карточки

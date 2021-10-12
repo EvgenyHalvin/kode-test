@@ -1,7 +1,16 @@
-import { React, useState, useEffect, useRef } from "react";
+import { React, useState, useEffect } from "react";
 import ListItem from "./ListItem";
 
-function Selector({ selesctItem, listItems, typeSelector, isGotItems }) {
+function Selector({
+  selesctItem,
+  listItems,
+  typeSelector,
+  isGotItems,
+  menuId,
+  menuList,
+  toggleMenu,
+}) {
+  // eslint-disable-next-line no-unused-vars
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectValue, setSelectValue] = useState("");
   const [listValueItems, setListValueItems] = useState([]);
@@ -11,13 +20,15 @@ function Selector({ selesctItem, listItems, typeSelector, isGotItems }) {
     setListValueItems(listItems);
   }, [listItems]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    if(typeSelector === "type") {
-      setTitleSelect("Выберите тип")
+    if (typeSelector === "type") {
+      setTitleSelect("Выберите тип");
     } else {
-      setTitleSelect("Выберите подтип")
+      setTitleSelect("Выберите подтип");
     }
-  })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (listItems) {
@@ -27,6 +38,7 @@ function Selector({ selesctItem, listItems, typeSelector, isGotItems }) {
         )
       );
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectValue]);
 
   function changeOption(e) {
@@ -34,7 +46,8 @@ function Selector({ selesctItem, listItems, typeSelector, isGotItems }) {
   }
 
   function handleMenu() {
-    setIsMenuOpen(!isMenuOpen);
+    // setIsMenuOpen(!isMenuOpen);
+    toggleMenu(menuId)
     setSelectValue("");
   }
 
@@ -51,7 +64,7 @@ function Selector({ selesctItem, listItems, typeSelector, isGotItems }) {
   }
 
   return (
-    <div className="selector" >
+    <div className="selector">
       {isGotItems ? (
         <div className="selector__switch selector__switch_disabled">
           Идёт загрузка...
@@ -60,21 +73,21 @@ function Selector({ selesctItem, listItems, typeSelector, isGotItems }) {
       ) : (
         <div
           className={`selector__switch ${
-            isMenuOpen ? "selector__switch_opened" : ""
+            menuList[menuId] ? "selector__switch_opened" : ""
           }`}
           onClick={() => handleMenu()}
         >
           {titleSelect}
           <span
             className={`selector__arrow ${
-              isMenuOpen ? "selector__arrow_opened" : ""
+              menuList[menuId] ? "selector__arrow_opened" : ""
             }`}
           ></span>
         </div>
       )}
       <div
         className={`selector__menu ${
-          isMenuOpen ? "selector__menu_opened" : ""
+          menuList[menuId] ? "selector__menu_opened" : ""
         }`}
       >
         <input
