@@ -4,3 +4,9 @@
   height: 510px;
   margin-top: 10px;
 }
+
+@media screen and (max-width: 550px) {
+  .wrap-for-loader {
+    height: calc(100vh - 300px);
+  }
+}
