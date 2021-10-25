@@ -50,7 +50,7 @@ function App() {
     const token = localStorage.getItem("jwt");
     if (token) {
       setIsConfirmed(true);
-      history.push("/kode-test/pokemon");
+      history.push("/pokemon");
     } else {
       setIsConfirmed(false);
       history.push("/sign-in");
