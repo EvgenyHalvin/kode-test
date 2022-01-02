@@ -105,6 +105,7 @@ function Main(props) {
       <Sidebar
         types={types}
         subtypes={subtypes}
+        cards={cards}
         getSelectedOptions={getSelectedOptions}
         isGotItems={isGotItems}
       />

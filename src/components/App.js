@@ -1,26 +1,26 @@
-import { React, useState, useEffect } from "react";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { React, useState, useEffect } from 'react';
+import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 
 // Импорт компоонентов
-import Header from "./Header";
-import Login from "./Login";
-import ProtectedRoute from "./ProtectedRoute";
-import Main from "./Main";
-import ErrorPopup from "./ErrorPopup";
-import FullImagePopup from "./FullImagePopup";
-import Confirmation from "./Confirmation";
-import FullInfoCard from "./FullInfoCard";
+import Header from './Header';
+import Login from './Login';
+import ProtectedRoute from './ProtectedRoute';
+import Main from './Main';
+import ErrorPopup from './ErrorPopup';
+import FullImagePopup from './FullImagePopup';
+import Confirmation from './Confirmation';
+import FullInfoCard from './FullInfoCard';
 
 // Импорт utils
-import api from "../utils/api.js";
+import api from '../utils/api.js';
 
 // Импорт контекста
-import { PocemonFullInfoContext } from "../contexts/pocemonFullInfoContext.js";
+import { PocemonFullInfoContext } from '../contexts/pocemonFullInfoContext.js';
 
 function App() {
   const fakeUser = {
-    email: "kode@kode.ru",
-    password: "Enk0deng",
+    email: 'kode@kode.ru',
+    password: 'Enk0deng',
   };
 
   const [loggedIn, setLoggedIn] = useState(false);
@@ -44,16 +44,19 @@ function App() {
   const [isGotItems, setIsGotItems] = useState(false);
 
   const history = useHistory();
+  const { search } = useLocation();
 
   // Проверка токена
   useEffect(() => {
-    const token = localStorage.getItem("jwt");
+    const token = localStorage.getItem('jwt');
     if (token) {
       setIsConfirmed(true);
-      history.push("/pokemon");
+      console.log('search: ', search);
+      history.replace({ search: search });
+      history.push(`/pokemon${search}`);
     } else {
       setIsConfirmed(false);
-      history.push("/sign-in");
+      history.push('/sign-in');
     }
   }, [history]);
 
@@ -97,7 +100,7 @@ function App() {
     if (JSON.stringify(data) === JSON.stringify(fakeUser)) {
       setAuthData(data);
       setLoggedIn(true);
-      history.push("/confirmation");
+      history.push('/confirmation');
     } else {
       setIsInfoToolTipOpen(true);
     }
@@ -111,10 +114,10 @@ function App() {
       setLoggedIn(false);
       setIsConfirmed(true);
       localStorage.setItem(
-        "jwt",
+        'jwt',
         `${authData.email}${authData.password}some_secret_key`
       );
-      history.push("/pokemon");
+      history.push('/pokemon');
     } else {
       setIsInfoToolTipOpen(true);
     }
@@ -122,8 +125,8 @@ function App() {
 
   // Выход из системы
   function signOut() {
-    localStorage.removeItem("jwt");
-    history.push("/sign-in");
+    localStorage.removeItem('jwt');
+    history.push('/sign-in');
     setIsConfirmed(false);
     setLoggedIn(false);
   }
@@ -171,16 +174,16 @@ function App() {
         return false;
       });
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedOptions]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedOptions, search]);
 
   // Попап быстрого просмотра карточки
   function openFullImagePopup() {
-    setIsImagePopupOpen(true)
+    setIsImagePopupOpen(true);
   }
 
   function setInfoFullImagePopup(card) {
-    setCardInfo(card)
+    setCardInfo(card);
   }
 
   return (
@@ -229,7 +232,11 @@ function App() {
       </div>
 
       <ErrorPopup isOpen={isInfoToolTipOpen} onClose={closeAllPopups} />
-      <FullImagePopup card={cardInfo} isOpen={isImagePopupOpen} onClose={closeAllPopups} />
+      <FullImagePopup
+        card={cardInfo}
+        isOpen={isImagePopupOpen}
+        onClose={closeAllPopups}
+      />
     </>
   );
 }

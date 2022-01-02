@@ -1,5 +1,7 @@
-import { React, useState, useEffect } from "react";
-import ListItem from "./ListItem";
+import { React, useState, useEffect } from 'react';
+import { useRouteMatch, useLocation } from 'react-router-dom';
+
+import ListItem from './ListItem';
 
 function Selector({
   selesctItem,
@@ -9,12 +11,14 @@ function Selector({
   menuId,
   menuList,
   toggleMenu,
+  queryLint,
+  handleQuery,
 }) {
   // eslint-disable-next-line no-unused-vars
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectValue, setSelectValue] = useState("");
+  const [selectValue, setSelectValue] = useState('');
   const [listValueItems, setListValueItems] = useState([]);
-  const [titleSelect, setTitleSelect] = useState("");
+  const [titleSelect, setTitleSelect] = useState('');
 
   useEffect(() => {
     setListValueItems(listItems);
@@ -22,13 +26,13 @@ function Selector({
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    if (typeSelector === "type") {
-      setTitleSelect("Выберите тип");
+    if (typeSelector === 'type') {
+      setTitleSelect(queryLint.type ?? 'Выберите тип');
     } else {
-      setTitleSelect("Выберите подтип");
+      setTitleSelect(queryLint.subtype ?? 'Выберите подтип');
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [queryLint]);
 
   useEffect(() => {
     if (listItems) {
@@ -38,7 +42,7 @@ function Selector({
         )
       );
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectValue]);
 
   function changeOption(e) {
@@ -47,11 +51,13 @@ function Selector({
 
   function handleMenu() {
     // setIsMenuOpen(!isMenuOpen);
-    toggleMenu(menuId)
-    setSelectValue("");
+    toggleMenu(menuId);
+    setSelectValue('');
   }
 
   function choiceTypeAndSelect(item) {
+    handleQuery(item, typeSelector);
+
     setSelectValue(item);
     setItemTitle(item);
     selesctItem(item, typeSelector);
@@ -61,7 +67,7 @@ function Selector({
   function setItemTitle(name) {
     setTitleSelect(name);
     setIsMenuOpen(false);
-    setSelectValue("");
+    setSelectValue('');
   }
 
   return (
@@ -74,21 +80,21 @@ function Selector({
       ) : (
         <div
           className={`selector__switch ${
-            menuList[menuId] ? "selector__switch_opened" : ""
+            menuList[menuId] ? 'selector__switch_opened' : ''
           }`}
           onClick={() => handleMenu()}
         >
           {titleSelect}
           <span
             className={`selector__arrow ${
-              menuList[menuId] ? "selector__arrow_opened" : ""
+              menuList[menuId] ? 'selector__arrow_opened' : ''
             }`}
           ></span>
         </div>
       )}
       <div
         className={`selector__menu ${
-          menuList[menuId] ? "selector__menu_opened" : ""
+          menuList[menuId] ? 'selector__menu_opened' : ''
         }`}
       >
         <input
@@ -96,7 +102,7 @@ function Selector({
           name="finder"
           className="selector__finder"
           placeholder="Искать... "
-          value={selectValue || ""}
+          value={selectValue || ''}
           onChange={changeOption}
           autoComplete="off"
         />
