@@ -51,7 +51,6 @@ function App() {
     const token = localStorage.getItem('jwt');
     if (token) {
       setIsConfirmed(true);
-      console.log('search: ', search);
       history.replace({ search: search });
       history.push(`/pokemon${search}`);
     } else {

@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { useRouteMatch, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import ListItem from './ListItem';
 
@@ -20,6 +20,8 @@ function Selector({
   const [listValueItems, setListValueItems] = useState([]);
   const [titleSelect, setTitleSelect] = useState('');
 
+  const { search } = useLocation();
+
   useEffect(() => {
     setListValueItems(listItems);
   }, [listItems]);
@@ -27,12 +29,14 @@ function Selector({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (typeSelector === 'type') {
-      setTitleSelect(queryLint.type ?? 'Выберите тип');
+      setTitleSelect(queryLint.type === '' ? 'Выберите тип' : queryLint.type);
     } else {
-      setTitleSelect(queryLint.subtype ?? 'Выберите подтип');
+      setTitleSelect(
+        queryLint.subtype === '' ? 'Выберите подтип' : queryLint.subtype
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [queryLint]);
+  }, [queryLint, search]);
 
   useEffect(() => {
     if (listItems) {

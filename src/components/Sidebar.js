@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { React, useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 
@@ -22,14 +23,14 @@ function Sidebar(props) {
     const queryObject = Object.fromEntries(array);
     const re = /%20/g;
     setQueryLint({
-      type: queryObject.type.replace(re, ' '),
-      subtype: queryObject.subtype.replace(re, ' '),
+      type: queryObject.type ? queryObject.type.replace(re, ' ') : '',
+      subtype: queryObject.subtype ? queryObject.subtype.replace(re, ' ') : '',
     });
   };
 
   useEffect(() => {
-    deserializeQuery(search);
-  }, []);
+    search && deserializeQuery(search);
+  }, [search]);
 
   function handleQuery(item, typeSelector) {
     if (typeSelector === 'type') {
@@ -61,7 +62,6 @@ function Sidebar(props) {
   }, [selectedItems, getSelectedOptions]);
 
   useEffect(() => {
-    console.log(queryLint);
     getSelectedOptions(queryLint);
   }, [queryLint, cards]);
 
