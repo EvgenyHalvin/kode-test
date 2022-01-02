@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { Route, HashRouter, useHistory, useLocation } from 'react-router-dom';
+import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 
 // Импорт компоонентов
 import Header from './Header';
@@ -194,7 +194,7 @@ function App() {
             loggedIn={loggedIn}
             isConfirmed={isConfirmed}
           />
-          <HashRouter>
+          <Switch>
             <Route path="/sign-in">
               <Login checkMatch={checkMatch} />
             </Route>
@@ -226,7 +226,7 @@ function App() {
               isConfirmed={isConfirmed}
               component={FullInfoCard}
             />
-          </HashRouter>
+          </Switch>
         </PocemonFullInfoContext.Provider>
       </div>
 
