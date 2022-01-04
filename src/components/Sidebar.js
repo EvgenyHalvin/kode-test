@@ -22,6 +22,7 @@ function Sidebar(props) {
     const array = pairs.map((elem) => elem.split('='));
     const queryObject = Object.fromEntries(array);
     const re = /%20/g;
+    
     setQueryLint({
       type: queryObject.type ? queryObject.type.replace(re, ' ') : '',
       subtype: queryObject.subtype ? queryObject.subtype.replace(re, ' ') : '',

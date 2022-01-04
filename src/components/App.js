@@ -1,11 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import {
-  Route,
-  Switch,
-  HashRouter,
-  useHistory,
-  useLocation,
-} from 'react-router-dom';
+import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 
 // Импорт компоонентов
 import Header from './Header';
@@ -195,46 +189,44 @@ function App() {
     <>
       <div className="page">
         <PocemonFullInfoContext.Provider value={pokemonFullInfo}>
-          <HashRouter>
-            <Header
-              signOut={signOut}
-              loggedIn={loggedIn}
+          <Header
+            signOut={signOut}
+            loggedIn={loggedIn}
+            isConfirmed={isConfirmed}
+          />
+          <Switch>
+            <Route path="/sign-in">
+              <Login checkMatch={checkMatch} />
+            </Route>
+
+            <Route path="/confirmation">
+              <Confirmation loggedIn={loggedIn} confirm={checkCode} />
+            </Route>
+
+            <ProtectedRoute
+              path="/pokemon"
+              exact
               isConfirmed={isConfirmed}
+              component={Main}
+              cards={cards}
+              types={types}
+              subtypes={subtypes}
+              getSelectedOptions={getSelectedOptions}
+              getPokemonInfo={getPokemonInfo}
+              isGotItems={isGotItems}
+              setCardInfo={setInfoFullImagePopup}
+              openFullImage={openFullImagePopup}
+              getCards={getCards}
+              getTypes={getTypes}
+              getSubtypes={getSubtypes}
             />
-            <Switch>
-              <Route path="/sign-in">
-                <Login checkMatch={checkMatch} />
-              </Route>
 
-              <Route path="/confirmation">
-                <Confirmation loggedIn={loggedIn} confirm={checkCode} />
-              </Route>
-
-              <ProtectedRoute
-                path="/pokemon"
-                exact
-                isConfirmed={isConfirmed}
-                component={Main}
-                cards={cards}
-                types={types}
-                subtypes={subtypes}
-                getSelectedOptions={getSelectedOptions}
-                getPokemonInfo={getPokemonInfo}
-                isGotItems={isGotItems}
-                setCardInfo={setInfoFullImagePopup}
-                openFullImage={openFullImagePopup}
-                getCards={getCards}
-                getTypes={getTypes}
-                getSubtypes={getSubtypes}
-              />
-
-              <ProtectedRoute
-                path="/pokemon/:name"
-                isConfirmed={isConfirmed}
-                component={FullInfoCard}
-              />
-            </Switch>
-          </HashRouter>
+            <ProtectedRoute
+              path="/pokemon/:name"
+              isConfirmed={isConfirmed}
+              component={FullInfoCard}
+            />
+          </Switch>
         </PocemonFullInfoContext.Provider>
       </div>
 
